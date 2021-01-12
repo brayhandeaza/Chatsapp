@@ -1,0 +1,15 @@
+// Mixing
+@mixin flexBox($justify, $align, $direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// Variable
+$fernGreen: #0E972E;
+$boringGreen: #35B259;
+$tungsten: #39362E;
+$magnesium: #bbbfac;
+$warmGray: #928A87;
+$lightPink: #F1F3FA;

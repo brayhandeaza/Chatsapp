@@ -1,0 +1,72 @@
+@import "./config.scss";
+
+.Conversations {
+    height: 90vh;
+    position: fixed;
+    right: 0;
+    background: $lightPink;
+
+    .right {
+        @include flexBox(flex-end, flex-start);
+    }
+
+    .left {
+        @include flexBox(flex-start, flex-start);
+    }
+
+    .Scroll {
+        background: $lightPink;
+    }
+
+    .message-box {
+        width: 100%;
+        height: auto;
+
+        @include flexBox(flex-end, center, row-reverse);
+
+        .message {
+            max-width: 80%;
+            height: auto;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+        }
+
+        .isMe {
+            background: $boringGreen;
+            border-radius: 20px 0 20px 20px;
+
+            span {
+                color: white;
+                text-align: start;
+            }
+        }
+
+        .isNotMe {
+            background: white;
+            border-radius: 0px 20px 20px 20px;
+
+            span {
+                color: $tungsten;
+                text-align: start;
+            }
+        }
+
+        .profile {
+            width: 50px;
+            height: 100%;
+            @include flexBox(flex-start, flex-start);
+            // padding: 0 10px;
+            margin: 0 15px;
+
+            img {
+                width: 45px;
+                height: 45px;
+                border-radius: 100%;
+            }
+
+            :hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

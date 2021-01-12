@@ -1,0 +1,161 @@
+@import "./config.scss";
+
+.Chats {
+    width: 375px;
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    position: fixed;
+
+    .Scroll {
+        width: 375px;
+        height: 922px;
+        overflow: scroll;
+        position: fixed;
+        bottom: 0;
+    }
+
+    // Header
+    .Header {
+        width: 100%;
+        height: 100px;
+        z-index: 1000;
+        @include flexBox(flex-start, center);
+
+        .logo {
+            width: 50%;
+            height: 100%;
+            padding: 0 20px;
+
+            @include flexBox(flex-start, center);
+
+            svg {
+                width: 40px;
+                height: 40px;
+                padding-right: 20px;
+                fill: $boringGreen;
+
+                :hover {
+                    cursor: pointer;
+                }
+            }
+
+            h1 {
+                color: $tungsten;
+                font-size: 22px;
+            }
+        }
+
+        .logout {
+            width: 50%;
+            height: 100%;
+            padding-right: 20px;
+            @include flexBox(flex-end, center);
+
+            h1 {
+                color: $warmGray;
+                font-size: small;
+            }
+
+            h1:hover {
+                cursor: pointer;
+            }
+
+            svg {
+                width: 18px;
+                height: 18px;
+                padding-left: 10px;
+                fill: $warmGray;
+            }
+
+            svg:hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    // Search
+    .Search {
+        width: 335px;
+        height: 40px;
+        background: $lightPink;
+        @include flexBox(space-between, center);
+        border-radius: 8px;
+        margin: 0 auto;
+        
+
+        input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            border: none;
+            padding-left: 15px;
+        }
+
+        svg {
+            width: 15px;
+            height: 15px;
+            padding: 5px 15px 0 0px;
+            fill: $warmGray;
+        }
+    }
+
+    // Chat
+    .Chat {
+        width: 100%;
+        height: 80px;
+        padding-left: 20px;
+        @include flexBox(flex-start, center);
+
+        .image {
+            width: 50px;
+            height: 100%;
+            padding: 0 15px 0 0;
+            @include flexBox(center, center);
+
+            img {
+                width: 45px;
+                height: 45px;
+                image-resolution: inspect($value: 10);
+                border-radius: 100%;
+            }
+        }
+
+        .title-and-message {
+            width: 100%;
+            height: 100%;
+            @include flexBox(center, flex-start, column);
+            // background: rgba(94, 185, 86, 0.445);
+
+            :nth-child(1) {
+                font-size: medium;
+                font-weight: bold;
+                padding-bottom: 5px;
+            }
+
+            :nth-child(2) {
+                font-size: small;
+                color: $warmGray;
+            }
+        }
+
+        .time {
+            width: 200px;
+            height: 100%;
+            padding: 15px 10px 0px 0px;
+
+
+            p {
+                font-size: small;
+                color: $warmGray;
+            }
+        }
+    }
+
+    .Chat:hover {
+        cursor: pointer;
+        background: $lightPink;
+        // background: rgba(248, 244, 244, 0.575);
+    }
+}
