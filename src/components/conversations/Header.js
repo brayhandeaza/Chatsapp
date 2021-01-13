@@ -12,7 +12,7 @@ class Header extends Component {
                 <div className="profile">
                     <div className="online">
                         <ReactSVG className="logo" src="assets/icons/online.svg" />
-                        <img src="assets/img/rr.jpg" />
+                        <img src="assets/img/rr.jpg" alt="profile"/>
                     </div>
                     <div className="name">
                         <span>Chriss Hunter</span>
