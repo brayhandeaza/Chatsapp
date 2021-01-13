@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { ReactSVG } from 'react-svg'
 
-// Components
-import Header from './Header'
-import Search from './Search'
-import Chat from './Chat'
-
-class Chats extends Component {
+class NewMessage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,6 +11,7 @@ class Chats extends Component {
             }
         }
     }
+
     hnaldeResize = () => {
         window.addEventListener("resize", (e) => {
             let height = window.innerHeight
@@ -23,7 +19,7 @@ class Chats extends Component {
             this.setState({
                 windowSize: {
                     height,
-                    width
+                    width: width - 375
                 }
             })
         })
@@ -36,7 +32,7 @@ class Chats extends Component {
             this.setState({
                 windowSize: {
                     height,
-                    width
+                    width: width - 375
                 }
             })
         })
@@ -48,24 +44,23 @@ class Chats extends Component {
     }
 
     render() {
-        const { chats } = this.props.state.chats
-        const { height } = this.state.windowSize
+        const { width } = this.state.windowSize
         return (
-            <div className="Chats">
-                <Header />
-                <Search />
-                <div className="Scroll" style={{ height: height - 145 }}>
-                    {chats.map((chat, key) => (
-                        <Chat chat={chat} key={key} />
-                    ))}
+            <div className="NewMessage" style={{ width }}>
+                <div className="attach">
+                    <ReactSVG className="logo" src="assets/icons/attach.svg" />
+                </div>
+                <div className="input-box">
+                    <input type="text" placeholder="Whisper something to Addy..." />
+                    <ReactSVG className="logo" src="assets/icons/sticker.svg" />
+                    <ReactSVG className="logo" src="assets/icons/emoji.svg" />
+                </div>
+                <div className="like">
+                    <ReactSVG className="logo" src="assets/icons/like.svg" />
                 </div>
             </div>
         )
     }
 }
 
-
-const mapStateToProps = (state) => {
-    return { state }
-}
-export default connect(mapStateToProps)(Chats)
+export default NewMessage
