@@ -1,89 +1,125 @@
 @import "./config.scss";
 
 .Conversations {
-    height: 95vh;
+    height: 100%;
     position: fixed;
     right: 0;
     background: $lightPink;
-    @include flexBox(flex-start, center, column);
+    @include flexBox(space-evenly, center, column);
 
-    .Messages {
+    .Header {
         width: 100%;
-        height: 100%;
+        height: 60px;
+        background: $lightPink;
 
-        .right {
-            @include flexBox(flex-end, flex-start);
-        }
+        .profile {
+            width: auto;
+            height: 100%;
+            padding: 0 20px;
+            @include flexBox(flex-start, center);
 
-        .left {
-            @include flexBox(flex-start, flex-start);
-        }
-
-        .Scroll {
-            background: $lightPink;
-        }
-
-        .message-box {
-            width: 100%;
-            height: auto;
-
-            @include flexBox(flex-end, center, row-reverse);
-
-            .message {
-                max-width: 80%;
-                height: auto;
-                padding: 10px 20px;
-                margin-bottom: 10px;
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
             }
 
-            .isMe {
-                background: $boringGreen;
-                border-radius: 20px 0 20px 20px;
-
-                span {
-                    color: white;
-                    text-align: start;
-                }
+            h1 {
+                color: $tungsten;
+                font-size: large;
+                padding-left: 10px;
             }
 
-            .isNotMe {
-                background: white;
-                border-radius: 0px 20px 20px 20px;
-
-                span {
-                    color: $tungsten;
-                    text-align: start;
-                }
+            :hover {
+                cursor: pointer;
             }
 
-            .profile {
-                width: 50px;
-                height: 100%;
+        }
+    }
+
+    .Scroll {
+        width: 100%;
+        height: 90%;
+        overflow: scroll;
+
+        .scroll-to-bottom {
+            height: 100%;
+        }
+
+        .Messages {
+
+            .right {
+                @include flexBox(flex-end, flex-start);
+            }
+
+            .left {
+                overflow: scroll;
                 @include flexBox(flex-start, flex-start);
-                // padding: 0 10px;
-                margin: 0 15px;
+            }
 
-                img {
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 100%;
+            .message-box {
+                width: 100%;
+                height: auto;
+
+                @include flexBox(flex-end, center, row-reverse);
+
+                .message {
+                    max-width: 80%;
+                    height: auto;
+                    padding: 10px 20px;
+                    margin-top: 4px;
+                    margin-bottom: 10px;
                 }
 
-                :hover {
-                    cursor: pointer;
+                .isMe {
+                    background: $boringGreen;
+                    border-radius: 20px 0 20px 20px;
+
+                    span {
+                        color: white;
+                        text-align: start;
+                    }
+                }
+
+                .isNotMe {
+                    background: white;
+                    border-radius: 0px 20px 20px 20px;
+
+                    span {
+                        color: $tungsten;
+                        text-align: start;
+                    }
+                }
+
+                .profile {
+                    width: 50px;
+                    height: 100%;
+                    @include flexBox(flex-start, flex-start);
+                    // padding: 0 10px;
+                    margin: 0 15px;
+
+                    img {
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 100%;
+                    }
+
+                    :hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }
     }
 
-    .NewMessage {
+    .Footer {
         width: 100%;
-        height: 30px;
-        position: fixed;
-        bottom: 0;
+        height: 50px;
         @include flexBox(flex-start, center);
-        background: transparent;
-        margin: 0 20px 10px 20px;
+        background: $lightPink;
+        margin: 0 0 0px 0;
+        z-index: 20000;
+
 
         .attach {
             width: 28px;
@@ -105,7 +141,7 @@
         }
 
         .input-box {
-            width:100%;
+            width: 100%;
             height: 30px;
             @include flexBox(flex-start, center);
             background: white;

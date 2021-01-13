@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ReactSVG } from 'react-svg'
 
-class NewMessage extends Component {
+class Footer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -46,7 +46,7 @@ class NewMessage extends Component {
     render() {
         const { width } = this.state.windowSize
         return (
-            <div className="NewMessage" style={{ width }}>
+            <div className="Footer" style={{ width }}>
                 <div className="attach">
                     <ReactSVG className="logo" src="assets/icons/attach.svg" />
                 </div>
@@ -63,4 +63,4 @@ class NewMessage extends Component {
     }
 }
 
-export default NewMessage
+export default Footer

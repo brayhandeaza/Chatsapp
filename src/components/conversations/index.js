@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 // Components
-import Messages from "./messages"
-import NewMessage from "./NewMessage"
+import Header from "./Header"
+import Messages from "./Messages"
+import Footer from "./Footer"
 
     class Conversations extends Component {
         constructor(props) {
@@ -14,8 +16,13 @@ import NewMessage from "./NewMessage"
         render() {
             return (
                 <div className="Conversations">
-                    <Messages/>
-                    <NewMessage/>
+                    <Header/>
+                    <div className="Scroll">
+                        <ScrollToBottom className="scroll-to-bottom" mode={"bottom"}>
+                            <Messages/>
+                        </ScrollToBottom>
+                    </div>
+                    <Footer/>
                 </div>
             )
         }
