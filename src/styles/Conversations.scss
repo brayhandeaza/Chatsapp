@@ -11,6 +11,7 @@
         width: 100%;
         height: 60px;
         background: $lightPink;
+        @include flexBox(space-between, center);
 
         .profile {
             width: auto;
@@ -18,22 +19,82 @@
             padding: 0 20px;
             @include flexBox(flex-start, center);
 
+            .online {
+                @include flexBox(center, flex-start);
+
+                .logo {
+                    width: 13px;
+                    height: 13px;
+                    background: $lightPink;
+                    @include flexBox(center, center);
+                    border-radius: 100%;
+                    transform: translateX(10px);
+                    position: absolute;
+
+                    svg {
+                        width: 8px;
+                        height: 8px;
+                        fill: $boringGreen;
+                        padding-bottom: 2px;
+                        position: relative;
+                        left: 0.5px;
+                        bottom: 0.1px;
+                    }
+                }
+            }
+
             img {
                 width: 40px;
                 height: 40px;
                 border-radius: 100%;
             }
 
-            h1 {
-                color: $tungsten;
-                font-size: large;
-                padding-left: 10px;
+            img:hover {
+                cursor: pointer;
+            }
+
+            .name {
+                @include flexBox(flex-start, flex-start, column);
+
+                :first-child {
+                    color: $tungsten;
+                    font-size: medium;
+                    padding-left: 10px;
+                    font-weight: bold;
+                }
+
+                :first-child:hover {
+                    cursor: pointer;
+                }
+
+                :nth-child(2) {
+                    color: $warmGray;
+                    font-size: 12px;
+                    padding-left: 10px;
+                }
+
+
+            }
+
+        }
+
+        .more {
+            width: 200px;
+            height: 100%;
+            margin-right: 20px;
+            // background: #000;
+            @include flexBox(flex-end, center);
+
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: $boringGreen;
+                padding-right: 25px;
             }
 
             :hover {
                 cursor: pointer;
             }
-
         }
     }
 
@@ -58,8 +119,9 @@
             }
 
             .message-box {
-                width: 100%;
+                width: 100% !important;
                 height: auto;
+
 
                 @include flexBox(flex-end, center, row-reverse);
 
@@ -84,6 +146,8 @@
                 .isNotMe {
                     background: white;
                     border-radius: 0px 20px 20px 20px;
+                    @include flexBox(flex-end, flex-start);
+
 
                     span {
                         color: $tungsten;
@@ -94,13 +158,11 @@
                 .profile {
                     width: 50px;
                     height: 100%;
-                    @include flexBox(flex-start, flex-start);
-                    // padding: 0 10px;
-                    margin: 0 15px;
+                    margin: 0 5px 0 0px;
 
                     img {
-                        width: 45px;
-                        height: 45px;
+                        width: 35px;
+                        height: 35px;
                         border-radius: 100%;
                     }
 
@@ -114,25 +176,23 @@
 
     .Footer {
         width: 100%;
-        height: 50px;
+        height: 60px;
         @include flexBox(flex-start, center);
         background: $lightPink;
-        margin: 0 0 0px 0;
-        z-index: 20000;
 
 
         .attach {
-            width: 28px;
-            height: 28px;
-            border-radius: 100%;
+            width: 25px;
+            height: 25px;
             margin: 0 10px;
-            @include flexBox(center, center);
+            @include flexBox(space-between, center);
+            // background: rgba(0, 0, 0, 0.39);
 
             svg {
                 width: 20px;
                 height: 20px;
                 fill: $boringGreen;
-                // padding-top: 3px;
+                padding-top: 5px;
             }
 
             :hover {
@@ -142,7 +202,7 @@
 
         .input-box {
             width: 100%;
-            height: 30px;
+            height: 40px;
             @include flexBox(flex-start, center);
             background: white;
             border-radius: 15px;
@@ -151,7 +211,7 @@
 
             input {
                 width: 100%;
-                height: 30px;
+                height: 40px;
                 border-radius: 15px;
                 padding: 0 10px;
                 border: none;
@@ -163,26 +223,7 @@
                 width: 22px;
                 height: 22px;
                 fill: $boringGreen;
-                padding: 5px 3px 0;
-            }
-        }
-
-        .attach {
-            width: 28px;
-            height: 28px;
-            border-radius: 100%;
-            margin: 0 10px;
-            @include flexBox(center, center);
-
-            svg {
-                width: 20px;
-                height: 20px;
-                fill: $boringGreen;
-                // padding-top: 3px;
-            }
-
-            :hover {
-                cursor: pointer;
+                padding: 3px 10px 0;
             }
         }
 
@@ -190,7 +231,7 @@
             width: 28px;
             height: 28px;
             border-radius: 100%;
-            margin: 0 10px;
+            margin: 0 15px;
             @include flexBox(center, center);
 
             svg {
@@ -209,5 +250,4 @@
     svg:hover {
         cursor: pointer;
     }
-
 }

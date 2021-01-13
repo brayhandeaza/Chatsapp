@@ -7,12 +7,21 @@ class Chat extends Component {
         super(props);
         this.state = {}
     }
+
+    handleOnClick = (e) => {
+        const sc = document.querySelectorAll(".Chat")
+        sc.forEach(chat => {
+            chat.classList.remove("isOn")
+        })
+        e.currentTarget.classList.add("isOn")
+    }
+
     render() {
         const { chat, key } = this.props
         const { conversations } = this.props.state.conversations
         let rKey = Math.floor(Math.random() * 10)
         return (
-            <div key={key} className="Chat">
+            <div key={key} className="Chat" onClick={this.handleOnClick}>
                 <div className="image">
                     <img src={chat.url} alt="pc" />
                 </div>

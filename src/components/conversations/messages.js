@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import emoji from "node-emoji"
 
-import Footer from "./Footer"
-
 class Messages extends Component {
     constructor(props) {
         super(props)
@@ -55,7 +53,6 @@ class Messages extends Component {
         const { conversations } = this.props.state.conversations
         return (
             <div className="Messages" style={{ width }}>
-                
                     {conversations.map((message, key) => (
                         <div key={key} div className="message-box" style={message.id === 1 ? styles.right : styles.left}>
                             <div className={`message ${message.id === 1 ? "isMe" : "isNotMe"}`}>
