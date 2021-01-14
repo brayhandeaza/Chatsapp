@@ -1,4 +1,6 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+// import axios from 'axios'
+import io from 'socket.io-client'
 
 // Component
 import Chats from './components/chats/'
@@ -10,9 +12,17 @@ import './styles/App.css'
 import './styles/Chats.scss'
 import './styles/Conversations.scss'
 
+// const fetchAxios = async () => {
+// 	await axios.get('/').then(res => {
+// 		console.log(res.data, "ok")
+// 	})
+// 	console.log("ok")
+// }
 
 function App(props) {
-	console.log(props);
+	const socket = io("http://localhost:5000/")
+	socket.on("connection")
+
 	return (
 		<div className="App">
 			<Chats />

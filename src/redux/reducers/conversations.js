@@ -1,5 +1,7 @@
 const conversations = [
-    { id: 1, imageUrl: "rr", message: "You Merry Christmas :pizza: my blood" },
+    { 
+        id: 1, 
+        imageUrl: "rr", message: "You Merry Christmas :pizza: my blood" },
 
     { id: 2, imageUrl: "lj", message: "Heyyy Antuan el cabello" },
     { id: 2, imageUrl: "lj", message: "Same for u :heart::heart::heart::heart:" },

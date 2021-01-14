@@ -34,7 +34,7 @@
                     svg {
                         width: 8px;
                         height: 8px;
-                        fill: $boringGreen;
+                        fill: $warmGray;
                         padding-bottom: 2px;
                         position: relative;
                         left: 0.5px;
@@ -121,9 +121,8 @@
             .message-box {
                 width: 100% !important;
                 height: auto;
-
-
-                @include flexBox(flex-end, center, row-reverse);
+                @include flexBox(flex-start, center, row-reverse);
+                // background: #000;
 
                 .message {
                     max-width: 80%;
@@ -147,7 +146,6 @@
                     background: white;
                     border-radius: 0px 20px 20px 20px;
                     @include flexBox(flex-end, flex-start);
-
 
                     span {
                         color: $tungsten;
@@ -223,7 +221,7 @@
                 width: 22px;
                 height: 22px;
                 fill: $boringGreen;
-                padding: 3px 10px 0;
+                padding: 3px 5px 0;
             }
         }
 

@@ -16,7 +16,7 @@ class Header extends Component {
                     </div>
                     <div className="name">
                         <span>Chriss Hunter</span>
-                        <span>Active now</span>
+                        <span>Active yesterday</span>
                     </div>
                 </div>  
                 <div className="more">

@@ -40,12 +40,17 @@ class Messages extends Component {
         })
     }
 
+    // handleConversations = () => {
+    //     const { conversations } = this.props.state.conversations
+    //     // if (condition) {
+            
+    //     // }
+    // }
+    
+
     componentDidMount() {
         this.hnaldeResize()
         this.handleWhenIsLoaded()
-
-        let node = document.getElementsByClassName("Scroll")
-        console.log(node[0].offsetHeight)
     }
 
     render() {

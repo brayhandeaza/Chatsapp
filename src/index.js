@@ -4,9 +4,13 @@ import './styles/index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router } from 'react-router-dom'
+import axios from 'axios'
+import thunk from 'redux-thunk'
+
+// Axios
+axios.defaults.baseURL = "http://localhost:5000"
 
 // Redux
-import thunk from 'redux-thunk'
 const { createStore, applyMiddleware, combineReducers } = require('redux')
 const { Provider } = require('react-redux')
 const { chats, conversations } = require("./redux/reducers/index")
