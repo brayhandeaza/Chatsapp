@@ -1,3 +1,5 @@
+
+
 const conversations = [
     { 
         id: 1, 
@@ -50,15 +52,17 @@ const conversations = [
     
 ]
 
+
 const initialState = {
     conversations,
+    users: []
 }
 
 module.exports = (state = initialState, actions) => {
     switch (actions.type) {
         case "conversations":
             return Object.assign([], state, {
-
+                users: actions.payload
             })
         default:
             return state

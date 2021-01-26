@@ -6,6 +6,7 @@ class Messages extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            conversations: [],
             windowSize: {
                 width: 0,
                 height: 0
@@ -32,6 +33,7 @@ class Messages extends Component {
             let height = window.innerHeight
             let width = window.innerWidth
             this.setState({
+                messages: [],
                 windowSize: {
                     height,
                     width: width - 375
@@ -40,36 +42,50 @@ class Messages extends Component {
         })
     }
 
-    // handleConversations = () => {
-    //     const { conversations } = this.props.state.conversations
-    //     // if (condition) {
-            
-    //     // }
-    // }
-    
+    handleSocket = () => {
+        const ws = new WebSocket('ws://localhost:5000')
+
+        ws.addEventListener('open', () => {
+            ws.send(JSON.stringify({
+                conversation: {
+                    id: 1
+                }
+            }))
+        })
+
+        ws.addEventListener('message', async (data) => {
+            this.setState({
+                conversations: JSON.parse(data.data).conversations[0].users_conversations
+            })
+            console.log(JSON.parse(data.data).conversations[0].users_conversations)
+        })
+    }
 
     componentDidMount() {
+        // this.handleSocket()
         this.hnaldeResize()
         this.handleWhenIsLoaded()
     }
 
     render() {
         const { width } = this.state.windowSize
-        const { conversations } = this.props.state.conversations
+        // const { conversations } = this.state
+        // const { conversations } = this.props.state.conversations
+        const conversations = []
         return (
             <div className="Messages" style={{ width }}>
-                    {conversations.map((message, key) => (
-                        <div key={key} div className="message-box" style={message.id === 1 ? styles.right : styles.left}>
-                            <div className={`message ${message.id === 1 ? "isMe" : "isNotMe"}`}>
-                                <span>{emoji.emojify(message.message)}</span>
-                            </div>
-                            {key < conversations.length - 1 && message.id !== conversations[key + 1].id ?
-                                <div className="profile">
-                                    <img src={`assets/img/${message.imageUrl}.jpg`} alt="profile" />
-                                </div> : <div className="profile" />
-                            }
+                {conversations.map((message, key) => (
+                    <div key={key} div className="message-box" style={message.id === 1 ? styles.right : styles.left}>
+                        <div className={`message ${message.id === 1 ? "isMe" : "isNotMe"}`}>
+                            <span>{emoji.emojify(message.message)}</span>
                         </div>
-                    ))}
+                        {key < conversations.length - 1 && message.id !== conversations[key + 1].id ?
+                            <div className="profile">
+                                <img src={`assets/img/${message.imageUrl}.jpg`} alt="profile" />
+                            </div> : <div className="profile" />
+                        }
+                    </div>
+                ))}
             </div>
         )
     }

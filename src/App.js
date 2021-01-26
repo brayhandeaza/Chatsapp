@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 // import axios from 'axios'
-import io from 'socket.io-client'
 
 // Component
 import Chats from './components/chats/'
 import Conversations from './components/conversations/'
+// import Socket from './components/Socket'
 
 // Styles
 import './styles/config.scss'
@@ -12,21 +12,26 @@ import './styles/App.css'
 import './styles/Chats.scss'
 import './styles/Conversations.scss'
 
-// const fetchAxios = async () => {
-// 	await axios.get('/').then(res => {
-// 		console.log(res.data, "ok")
-// 	})
-// 	console.log("ok")
-// }
+const fetchAxios = async () => {
+	const socket = new WebSocket("ws://localhost:5000")
+	socket.addEventListener("open", () => {
+
+	})
+
+	// socket.send("Hello from client")
+	socket.addEventListener("message", (data) => {
+		console.log(data.data.data)
+	})
+}
 
 function App(props) {
-	const socket = io("http://localhost:5000/")
-	socket.on("connection")
+	fetchAxios()
 
 	return (
 		<div className="App">
 			<Chats />
 			<Conversations />
+			{/* <Socket /> */}
 		</div>
 	)
 }

@@ -5,13 +5,12 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
-import thunk from 'redux-thunk'
 
 // Axios
-axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = "http://192.168.1.75:5000"
 
 // Redux
-const { createStore, applyMiddleware, combineReducers } = require('redux')
+const { createStore, combineReducers } = require('redux')
 const { Provider } = require('react-redux')
 const { chats, conversations } = require("./redux/reducers/index")
 
@@ -21,8 +20,8 @@ const reducer = combineReducers({
 })
 
 
-const store = createStore(reducer, applyMiddleware(thunk))
-
+const store = createStore(reducer)
+document.title = ""
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
