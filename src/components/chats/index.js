@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import io from 'socket.io-client'
 
 // Components
 import Header from './Header'
 import Search from './Search'
 import Chat from './Chat'
-import axios from 'axios'
 
 class Chats extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            chats: [],
+            conversations: [],
+            messages: [],
             windowSize: {
                 width: 0,
                 height: 0
             }
         }
+        this.ws = io("http://localhost:5000/")
     }
-    hnaldeResize = () => {
+    handleResize = () => {
         window.addEventListener("resize", (e) => {
             let height = window.innerHeight
             let width = window.innerWidth
@@ -44,41 +46,33 @@ class Chats extends Component {
         })
     }
 
-    handleSocket = () => {
-        const ws = new WebSocket('ws://localhost:5000')
+    fetchConversations = () => {
+        this.ws.emit("conversationId", 1)
+        this.ws.on("conversations", (_messages) => {
+            const { users_conversations } = _messages[0]
 
-        ws.addEventListener('open', () => {
-            ws.send(JSON.stringify({
-                conversation: {
-                    id: 1
-                }
-            }))
-        })
-
-        ws.addEventListener('message', async (data) => {
             this.setState({
-                chats: JSON.parse(data.data).conversations[0].users_conversations
+                conversations: users_conversations
             })
-            console.log(JSON.parse(data.data).conversations[0].users_conversations)
         })
     }
 
     componentDidMount() {
-        this.handleSocket()
-        this.hnaldeResize()
+        this.handleResize()
         this.handleWhenIsLoaded()
-        
+        this.fetchConversations()
     }
 
     render() {
-        const { chats } = this.state
         const { height } = this.state.windowSize
+        const { conversations } = this.state
+
         return (
             <div className="Chats">
                 <Header />
                 <Search />
                 <div className="Scroll" style={{ height: height - 145 }}>
-                    {chats.map((chat, key) => (
+                    {conversations.map((chat, key) => (
                         <Chat chat={chat} key={key} />
                     ))}
                 </div>

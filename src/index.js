@@ -24,7 +24,7 @@ const store = createStore(reducer)
 document.title = ""
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
+		<Provider hello={{ wid: 800}} store={store}>
 			<Router>
 				<App />
 			</Router>

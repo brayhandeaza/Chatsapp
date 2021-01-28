@@ -41,9 +41,7 @@ class Footer extends Component {
         })
     }
 
-    handleOnChange = (e) => {
-        console.log(emoji.emojify(e.target.value));
-        
+    handleOnChange = (e) => {        
         this.setState({
             inputValue: emoji.emojify(e.target.value)
         })
